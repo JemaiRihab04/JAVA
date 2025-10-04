@@ -48,22 +48,62 @@ public class Main {
 
         myZoo.animals[0] = lion;*/
 
-        Animal lion = new Animal("Felidae", "Simba", 5, true);
+        Animal lion1 = new Animal("Felidae", "Simba", 5, true);
+        Animal lion2 = new Animal("Felidae", "Simba", 5, true);
+        Animal tigre = new Animal("Felidae", "Shere Khan", 4, true);
+        Animal elephant = new Animal("Elephantidae", "Dumbo", 10, true);
 
-        Zoo myZoo = new Zoo(nom, "Tunis", cages);
+        Zoo myZoo = new Zoo(nom, "Tunis");
 
 
-        myZoo.animals[0] = lion;
+        // fct ajouter
+        System.out.println(myZoo.addAnimal(lion1));
+        System.out.println(myZoo.addAnimal(lion2));
+        System.out.println(myZoo.addAnimal(tigre));
+        System.out.println(myZoo.addAnimal(elephant));
+
+        myZoo.displayAnimals();
+        // fct rechercher
+        int index = myZoo.searchAnimal(lion2);
+        System.out.println("Indice du lion : " + index);
+
+        System.out.println("Avant suppression :");
+        myZoo.displayAnimals();
+
+        boolean result = myZoo.removeAnimal(lion1);
+        System.out.println("Suppression du lion réussie ? " + result);
+
+        System.out.println("Après suppression :");
+        myZoo.displayAnimals();
+
+        if (myZoo.isZooFull()) {
+            System.out.println("Le zoo est plein !");
+        } else {
+            System.out.println("Il reste de la place dans le zoo.");
+        }
+        Zoo zoo1 = new Zoo("Safari Park", "Tunis");
+        Zoo zoo2 = new Zoo("Animal Kingdom", "Sousse");
+        zoo1.addAnimal(new Animal("Felidae", "Simba2", 5, true));
+        zoo1.addAnimal(new Animal("Canidae", "Rex", 3, true));
+
+        zoo2.addAnimal(new Animal("Felidae", "Shere Khan2", 4, true));
+        Zoo zooPlusGrand = Zoo.comparerZoo(zoo1, zoo2);
+        System.out.println("Le zoo avec le plus d'animaux est : " + zooPlusGrand.name);
+
+
+
+
+        //myZoo.animals[0] = lion;
 
 
         myZoo.displayZoo();
         System.out.println(myZoo); // appelle automatiquement obj.toString() toString() est héritée de Object.
         System.out.println(myZoo.toString());
 
-        lion.displayAnimal();
-        System.out.println(lion);
+        lion1.displayAnimal();
+        System.out.println(lion1);
 
-        System.out.println(lion.toString());
+        System.out.println(lion1.toString());
 
         sc.close();
     }
