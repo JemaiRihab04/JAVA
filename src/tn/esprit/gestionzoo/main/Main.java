@@ -1,8 +1,3 @@
-package tn.esprit.gestionzoo.main;
-
-import tn.esprit.gestionzoo.entities.Animal;
-import tn.esprit.gestionzoo.entities.Zoo;
-import tn.esprit.gestionzoo.entities.ZooManagement;
 import java.util.Scanner;
 
 public class Main {
@@ -31,16 +26,12 @@ public class Main {
             }
         } while (cages <= 0);
 
-        /*ZooManagement zoo = new ZooManagement();
+        ZooManagement zoo = new ZooManagement();
 
         zoo.zooName = nom;
-        zoo.nbrCages = cages;*/
-        ZooManagement zoo = new ZooManagement();
-        zoo.setZooName(nom);
-        zoo.setNbrCages(cages);
+        zoo.nbrCages = cages;
 
-
-        System.out.println("Le nom du zoo : " + zoo.getZooName() + " et il contient " + zoo.getNbrCages() + " cages.");
+        System.out.println("Le nom du zoo : " + zoo.zooName + " et il contient " + zoo.nbrCages + " cages.");
 
         /*Animal lion = new Animal();
         lion.family = "Felidae";
