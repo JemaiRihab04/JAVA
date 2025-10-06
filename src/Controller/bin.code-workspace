@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"path": "../../../test/bin"
+		},
+		{
+			"path": "../../../test/config"
+		},
+		{
+			"path": "../../../test/migrations"
+		},
+		{
+			"path": "../../../test/public"
+		},
+		{
+			"path": "../../../test/src"
+		},
+		{
+			"path": "../../../test/templates"
+		},
+		{
+			"path": "../../../test/tests"
+		},
+		{
+			"path": "../../../test/translations"
+		},
+		{
+			"path": "../../../test/var"
+		},
+		{
+			"path": "../../../test/vendor"
+		}
+	]
+}
