@@ -17,8 +17,9 @@ class AuthorRepository extends ServiceEntityRepository
     }
 
     //    /**
-    //     * @return Author[] Returns an array of Author objects
-    //     */
+    //     * @return Author[] Returns an array of Author objects retour toujours un tableau kn l
+    //      */
+   
     //    public function findByExampleField($value): array 
     //    {
     //        return $this->createQueryBuilder('a')

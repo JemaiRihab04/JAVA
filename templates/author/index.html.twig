@@ -6,11 +6,17 @@
 
 
 <div class="example-wrapper">
-    <h1>{{name}}</h1>
-    
+    <h1>Liste des auteurs</h1>
 
-    
-
-    
+    {% for author in authors %}
+        <p>ID : {{ author.id }}</p>
+        <p>Nom d'utilisateur : {{ author.username }}</p>
+        <p>Email : {{ author.email }}</p>
+        <hr>
+    {% else %}
+        <p>Aucun auteur trouvé.</p>
+    {% endfor %}
 </div>
-{% endblock %}
+
+
+
