@@ -5,6 +5,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response; // classe response 
 use Symfony\Component\Routing\Attribute\Route;
 
+
+
 final class StudentController extends AbstractController 
 {
     #[Route('/student', name: 'app_student')] // chaque controller a une route et chaque route a une path (/student) et le nom du path (app_student)
@@ -85,6 +87,8 @@ public function getStudentName($name): Response
  
 
 //redirect to  route thezni l path ekher 
+
+// formulaire 
 }
 
 

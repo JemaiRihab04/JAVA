@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Component\Routing\Attribute\Route;
 
 
@@ -11,6 +12,15 @@ use App\Entity\Author;
 use App\Repository\AuthorRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Component\Form\Extension\Core\Type\TextType; //Classe fournie par Symfony pour créer un champ texte dans un formulaire.
+use Symfony\Component\Form\Extension\Core\Type\EmailType; // Classe fournie par Symfony pour créer un champ email.
+use Symfony\Component\Form\Extension\Core\Type\SubmitType; //Classe fournie par Symfony pour créer un bouton Envoyer ou Submit.
+
+use App\Form\AuthorType;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Book;
 
 
 
@@ -175,4 +185,66 @@ public function updateAuthor(ManagerRegistry $em, AuthorRepository $authRepo, in
 
     return new Response("Auteur avec l'id $id mis à jour avec succès !");
 }
+
+//   1ère méthode: Création du formulaire dans le contrôleur
+
+#[Route('/add-author', name: 'add_author')]
+    public function addAuthor(Request $request): Response
+    {
+        // Création d'un objet Author
+        $author = new Author();
+        $author->setUsername('Écrire un nom d’utilisateur');
+        $author->setEmail('email@example.com');
+
+        // Création du formulaire lié à l'objet Author
+        $form = $this->createFormBuilder($author) //createFormBuilder() permet de définir un formulaire
+            ->add('username', TextType::class, [ //La méthode add() est utilisée dans Symfony pour ajouter des champs à un formulaire lors de sa création. 
+
+                'label' => 'Nom d’utilisateur',
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Email',
+            ])
+            ->add('save', SubmitType::class, ['label' => 'Créer Auteur']) // save est le nom du bouton de soumission du formulaire.
+            ->getForm();
+
+        // Traitement de la soumission
+        $form->handleRequest($request); 
+        // classe Request :Dans les formulaires Symfony, elle est utilisée pour remplir automatiquement l’objet avec les données soumises.
+
+        
+
+        return $this->render('author/add.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+// 2eme methode 
+#[Route('/add-author2', name: 'add_author2')]
+    public function addAuthor2(Request $request, EntityManagerInterface $em): Response
+    {
+        
+        $author = new Author();
+
+        
+        $form = $this->createForm(AuthorType::class, $author);
+
+        // Récupère les données envoyées par le formulaire et remplir $author 
+        $form->handleRequest($request);
+
+        // Vérifie si le formulaire a été soumis 
+        if ($form->isSubmitted()) {
+            
+            $em->persist($author); 
+            $em->flush();          
+
+            
+            return $this->redirectToRoute('add_author2');
+        }
+
+        
+        return $this->render('author/add.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 }
+

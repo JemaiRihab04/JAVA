@@ -1,0 +1,31 @@
+<h1>Statistiques des livres</h1>
+
+<h2>Nombre total de livres (DQL)</h2>
+{% for row in nbrBooksDQL %}
+    <p>Total : {{ row[1] }}</p>
+{% endfor %}
+
+<h2>Nombre total de livres (QueryBuilder)</h2>
+{% for row in nbrBooksQB %}
+    <p>Total : {{ row[1] }}</p>
+{% endfor %}
+
+<hr>
+
+<h2>Livres de l'auteur (DQL)</h2>
+<ul>
+    {% for book in booksByAuthorDQL %}
+        <li>{{ book.title }}</li>
+    {% else %}
+        <li>Aucun livre trouvé.</li>
+    {% endfor %}
+</ul>
+
+<h2>Livres de l'auteur (QueryBuilder)</h2>
+<ul>
+    {% for book in booksByAuthorQB %}
+        <li>{{ book.title }}</li>
+    {% else %}
+        <li>Aucun livre trouvé.</li>
+    {% endfor %}
+</ul>
