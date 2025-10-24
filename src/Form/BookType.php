@@ -24,7 +24,7 @@ class BookType extends AbstractType
             ->add('enabled')
             ->add('author', EntityType::class, [
                 'class' => Author::class,
-                'choice_label' => 'id',
+                'choice_label' => 'id', // liste deroulente 
             ])
            ->add('save', SubmitType::class, [
                 'label' => $options['submit_label'], 

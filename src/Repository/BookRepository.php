@@ -47,10 +47,19 @@ class BookRepository extends ServiceEntityRepository
     {
         $em = $this->getEntityManager();
         $query = $em->createQuery("SELECT COUNT(b.id) FROM App\Entity\Book b");
-        return $query->getResult(); //tableau contenant une seule colonne nombre des livres
+        return $query->getSingleScalerResult(); // maa cout w sum khter retour mteena hja wahda nestahkch tableau 
 
 
     }
+    /*public function getBookByName ($name)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT a FROM App\Entity\Book ba where b.name LIKE :n"); // n mehich constante bch tetbadel : pour direun parametre 
+        $query = $em->setParameter('n',$name);
+        return $query->getResult(); //tableau contenant une seule colonne nombre des livres
+
+
+    }*/
 //Version QueryBuilder 
     public function getNbrBooksQB()
     {
@@ -71,10 +80,10 @@ class BookRepository extends ServiceEntityRepository
     // Livres par auteur (QueryBuilder)
     public function getBooksByAuthorQB(Author $author)
     {
-        $qb = $this->createQueryBuilder('b')
+        $qb = $this->createQueryBuilder('b') // tekhou alias tekhdem blast select slect * from author 
                    ->where('b.author = :author')
                    ->setParameter('author', $author);
-        return $qb->getQuery()->getResult();
+        return $qb->getQuery()->getResult(); // getQuery transforme createQueryBuilder('b') en dql 
     }
 
 }
