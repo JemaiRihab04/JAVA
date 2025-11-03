@@ -1,4 +1,7 @@
 package tn.esprit.gestionzoo.main;
+import tn.esprit.gestionzoo.entities.ZooFullException;
+import tn.esprit.gestionzoo.entities.InvalidAgeException;
+
 import tn.esprit.gestionzoo.entities.ZooManagement;
 import tn.esprit.gestionzoo.entities.Zoo;
 import tn.esprit.gestionzoo.entities.Animal;
@@ -61,19 +64,30 @@ public class Main {
 
         myZoo.animals[0] = lion;*/
 
-        Animal lion1 = new Animal("Felidae", "Simba", 5, true);
-        Animal lion2 = new Animal("Felidae", "Simba", 5, true);
-        Animal tigre = new Animal("Felidae", "Shere Khan", 4, true);
-        Animal elephant = new Animal("Elephantidae", "Dumbo", 10, true);
+
+
 
         Zoo myZoo = new Zoo(nom, "Tunis");
 
 
         // fct ajouter
-        System.out.println(myZoo.addAnimal(lion1));
-        System.out.println(myZoo.addAnimal(lion2));
-        System.out.println(myZoo.addAnimal(tigre));
-        System.out.println(myZoo.addAnimal(elephant));
+        Animal lion1 = null;
+        Animal lion2 = null;
+        Animal tigre = null;
+        Animal elephant = null;
+
+        try {
+            lion1 = new Animal("Felidae", "Simba", 5, true);
+            lion2 = new Animal("Felidae", "Simba", 5, true);
+            tigre = new Animal("Felidae", "Shere Khan", 4, true);
+            elephant = new Animal("Elephantidae", "Dumbo", 10, true);
+        } catch (InvalidAgeException e) {
+            System.out.println("Erreur d'âge détectée : " + e.getMessage());
+        }
+
+
+
+
 
         myZoo.displayAnimals();
         // fct rechercher
@@ -96,10 +110,10 @@ public class Main {
         }
         Zoo zoo1 = new Zoo("Safari Park", "Tunis");
         Zoo zoo2 = new Zoo("Animal Kingdom", "Sousse");
-        zoo1.addAnimal(new Animal("Felidae", "Simba2", 5, true));
-        zoo1.addAnimal(new Animal("Canidae", "Rex", 3, true));
+        //zoo1.addAnimal(new Animal("Felidae", "Simba2", 5, true));
+        //zoo1.addAnimal(new Animal("Canidae", "Rex", 3, true));
 
-        zoo2.addAnimal(new Animal("Felidae", "Shere Khan2", 4, true));
+        //zoo2.addAnimal(new Animal("Felidae", "Shere Khan2", 4, true));
         Zoo zooPlusGrand = Zoo.comparerZoo(zoo1, zoo2);
         System.out.println("Le zoo avec le plus d'animaux est : " + zooPlusGrand.getName());
 
@@ -129,17 +143,28 @@ public class Main {
 
         //Aquatic aquatic = new Aquatic("Poisson", "Requin", 5, false, "Océan");
         Terrestrial terrestrial = new Terrestrial("Canidé", "Chien", 4, true, 4);
-        Dolphin dolphin = new Dolphin("Cétacé", "Dauphin", 8, true, "Mer", 25.5f);
-        Pingouin pingouin = new Pingouin("Oiseau", "Pingouin", 2, false, "Antarctique", 15.0f);
-        Dolphin dolphin2 = new Dolphin("Cétacé", "Dauphin", 8, true, "Mer", 25.5f);
+        try {
+            Dolphin dolphin = new Dolphin("Cétacé", "Dauphin", 8, true, "Mer", 25.5f);
+            Pingouin pingouin = new Pingouin("Oiseau", "Pingouin", 2, false, "Antarctique", 15.0f);
+            Dolphin dolphin2 = new Dolphin("Cétacé", "Dauphin", 8, true, "Mer", 25.5f);
+
+            System.out.println(dolphin);
+            System.out.println(pingouin);
+
+            dolphin.swim();
+            pingouin.swim();
+
+        } catch (InvalidAgeException e) {
+            System.out.println("Erreur d'âge détectée : " + e.getMessage());
+        }
+
         //System.out.println(aquatic);
         System.out.println(terrestrial);
         System.out.println(dolphin);
         System.out.println(pingouin);
 
         //aquatic.swim();
-        dolphin.swim();
-        pingouin.swim(); //La classe Penguin hérite la méthode swim() de Aquatic → elle affiche le même message que Aquatic.
+
         //s7
         myZoo.addAquaticAnimal(dolphin);
         myZoo.addAquaticAnimal(pingouin);
@@ -153,6 +178,36 @@ public class Main {
         } else {
             System.out.println("Les animaux sont différents !");
         }
+
+        //s8
+        /*Zoo zoo3 = new Zoo("Zoo de Tunis", "Tunis", 3);
+
+        try {
+            zoo3.addAnimal(new Animal("Lion", "Terrestre", 5, true));
+            zoo3.addAnimal(new Animal("Tigre", "Terrestre", 4, true));
+            zoo3.addAnimal(new Animal("Zèbre", "Terrestre", 3, true));
+            zoo3.addAnimal(new Animal("Girafe", "Terrestre", 6, true)); // déclenche l'exception
+        } catch (ZooFullException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+
+
+        System.out.println("Nombre total d'animaux : " + zoo3.getCompteur());*/
+        Zoo zoo3 = new Zoo("Zoo de Tunis", "Tunis", 3);
+
+        try {
+            zoo3.addAnimal(new Animal("Félin", "Lion", 5, true));
+            zoo3.addAnimal(new Animal("Félin", "Tigre", -4, true)); // Exception InvalidAgeException
+            zoo3.addAnimal(new Animal("Équidé", "Zèbre", 3, true));
+            zoo3.addAnimal(new Animal("Mammifère", "Girafe", 6, true)); // Exception ZooFullException
+        } catch (InvalidAgeException e) {
+            System.out.println("Erreur d'âge : " + e.getMessage());
+        } catch (ZooFullException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+
+        System.out.println("Nombre total d'animaux : " + zoo3.getCompteur());
+
 
         sc.close();
     }

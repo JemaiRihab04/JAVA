@@ -9,12 +9,25 @@ public class Animal {
     public Animal() { }
 
 
-    public Animal(String family, String name, int age, boolean isMammal) {
+    /*public Animal(String family, String name, int age, boolean isMammal) {
         this.family = family;
         this.name = name;
         setAge(age);
         this.isMammal = isMammal;
+    }*/
+
+
+    public Animal(String family, String name, int age, boolean isMammal) throws InvalidAgeException {
+        if (age < 0) {
+            throw new InvalidAgeException("L'âge de l'animal ne peut pas être négatif !");
+        }
+        this.family = family;
+        this.name = name;
+        this.age = age;
+        this.isMammal = isMammal;
     }
+
+
     public String getFamily() { return family; }
     public String getName() { return name; }
     public int getAge() { return age; }

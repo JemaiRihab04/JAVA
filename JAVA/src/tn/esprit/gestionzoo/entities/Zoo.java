@@ -4,7 +4,7 @@ public class Zoo {
     private Animal[] animals = new Animal[25];
     private String name;
     private String city;
-    private final int NBR_CAGES = 25;
+    private  int NBR_CAGES = 25;
 
     int compteur = 0;
     //s7
@@ -18,6 +18,15 @@ public class Zoo {
         this.city = city;
 
     }
+    public Zoo(String name, String city, int nbrCages) {
+        setName(name);
+        this.city = city;
+        this.NBR_CAGES = nbrCages;
+        this.animals = new Animal[nbrCages];
+    }
+
+
+
     public String getName() { return name; }
     public String getCity() { return city; }
     public int getNbrCages() { return NBR_CAGES; }
@@ -42,7 +51,7 @@ public class Zoo {
         return "Zoo : " + name + ", Ville : " + city + ", Nombre de cages : " + NBR_CAGES;
     }
 
-    public boolean addAnimal(Animal animal) {
+    /*public boolean addAnimal(Animal animal) {
 
         if (isZooFull()) {
             System.out.println("Impossible d'ajouter l'animal : le zoo est plein !");
@@ -61,7 +70,35 @@ public class Zoo {
         animals[compteur] = animal;
         compteur++;
         return true;
+    }*/
+    /*public void addAnimal(Animal animal) throws ZooFullException {
+        if (isZooFull()) {
+            throw new ZooFullException("Impossible d'ajouter l'animal : le zoo est plein !");
+        }
+
+        animals[compteur] = animal;
+        compteur++;
+
+        System.out.println("Animal ajouté : " + animal.getName() + ". Nombre total : " + compteur);
+    }*/
+    public void addAnimal(Animal animal) throws ZooFullException, InvalidAgeException {
+        if (animal.getAge() < 0) {
+            throw new InvalidAgeException("L'âge de l'animal ne peut pas être négatif !");
+        }
+
+        if (isZooFull()) {
+            throw new ZooFullException("Impossible d'ajouter l'animal : le zoo est plein !");
+        }
+
+        animals[compteur] = animal;
+        compteur++;
+        System.out.println("Animal ajouté : " + animal.getName() + ". Nombre total : " + compteur);
     }
+
+
+
+
+
 
     public void displayAnimals() {
         System.out.println("Animaux dans le zoo :");
