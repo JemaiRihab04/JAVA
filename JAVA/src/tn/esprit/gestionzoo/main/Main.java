@@ -1,14 +1,14 @@
 package tn.esprit.gestionzoo.main;
-import tn.esprit.gestionzoo.entities.ZooFullException;
-import tn.esprit.gestionzoo.entities.InvalidAgeException;
-
-import tn.esprit.gestionzoo.entities.ZooManagement;
-import tn.esprit.gestionzoo.entities.Zoo;
-import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Food;           // <-- Ajoute ça
 import tn.esprit.gestionzoo.entities.Aquatic;
 import tn.esprit.gestionzoo.entities.Dolphin;
 import tn.esprit.gestionzoo.entities.Pingouin;
 import tn.esprit.gestionzoo.entities.Terrestrial;
+import tn.esprit.gestionzoo.entities.InvalidAgeException;
+import tn.esprit.gestionzoo.entities.ZooFullException;
+import tn.esprit.gestionzoo.entities.ZooManagement;
+import tn.esprit.gestionzoo.entities.Zoo;
+import tn.esprit.gestionzoo.entities.Animal;
 
 
 import java.util.Scanner;
@@ -141,8 +141,9 @@ public class Main {
         Pingouin p = new Pingouin();
 
 
+
         //Aquatic aquatic = new Aquatic("Poisson", "Requin", 5, false, "Océan");
-        Terrestrial terrestrial = new Terrestrial("Canidé", "Chien", 4, true, 4);
+        //Terrestrial terrestrial = new Terrestrial("Canidé", "Chien", 4, true, 4);
         try {
             Dolphin dolphin = new Dolphin("Cétacé", "Dauphin", 8, true, "Mer", 25.5f);
             Pingouin pingouin = new Pingouin("Oiseau", "Pingouin", 2, false, "Antarctique", 15.0f);
@@ -159,7 +160,7 @@ public class Main {
         }
 
         //System.out.println(aquatic);
-        System.out.println(terrestrial);
+        /*System.out.println(terrestrial);
         System.out.println(dolphin);
         System.out.println(pingouin);
 
@@ -177,22 +178,10 @@ public class Main {
             System.out.println("Les animaux sont identiques !");
         } else {
             System.out.println("Les animaux sont différents !");
-        }
+        }*/
 
-        //s8
-        /*Zoo zoo3 = new Zoo("Zoo de Tunis", "Tunis", 3);
+        //exception
 
-        try {
-            zoo3.addAnimal(new Animal("Lion", "Terrestre", 5, true));
-            zoo3.addAnimal(new Animal("Tigre", "Terrestre", 4, true));
-            zoo3.addAnimal(new Animal("Zèbre", "Terrestre", 3, true));
-            zoo3.addAnimal(new Animal("Girafe", "Terrestre", 6, true)); // déclenche l'exception
-        } catch (ZooFullException e) {
-            System.out.println("Erreur : " + e.getMessage());
-        }
-
-
-        System.out.println("Nombre total d'animaux : " + zoo3.getCompteur());*/
         Zoo zoo3 = new Zoo("Zoo de Tunis", "Tunis", 3);
 
         try {
@@ -207,6 +196,46 @@ public class Main {
         }
 
         System.out.println("Nombre total d'animaux : " + zoo3.getCompteur());
+
+
+
+
+        // interfaces
+        try {
+
+            Aquatic aquatic = new Aquatic("Poisson", "Requin", 5, false, "Océan") {
+                @Override
+                public void swim() {
+                    System.out.println(getName() + " nage dans l'océan ");
+                }
+            };
+
+
+            Pingouin pingouin = new Pingouin("Oiseau", "Pingouin", 2, false, "Antarctique", 15.0f);
+
+
+            Terrestrial lion = new Terrestrial("Félin", "Lion", 5, true, 4);
+
+            // Test méthodes
+            System.out.println("\n=== Test Aquatic ===");
+            aquatic.eatMeat(Food.MEAT);
+            aquatic.eatMeat(Food.PLANT);
+            aquatic.swim();
+
+            System.out.println("\n=== Test Pingouin ===");
+            pingouin.eatMeat(Food.MEAT);
+            pingouin.eatMeat(Food.PLANT);
+            pingouin.swim();
+
+            System.out.println("\n=== Test Terrestrial ===");
+            lion.eatMeat(Food.MEAT);
+            lion.eatPlant(Food.PLANT);
+            lion.eatPlantAndMeet(Food.BOTH);
+
+        } catch (InvalidAgeException e) {
+            System.out.println("Erreur d'âge : " + e.getMessage());
+        }
+
 
 
         sc.close();

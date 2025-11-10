@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="de658d8b-840b-42c4-bb5e-a09c93e64cc6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../../../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../entities/Food.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Carnivore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Herbivore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Omnivore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entities/Aquatic.java" beforeDir="false" afterPath="$PROJECT_DIR$/../entities/Aquatic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entities/Terrestrial.java" beforeDir="false" afterPath="$PROJECT_DIR$/../entities/Terrestrial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../JAVA_git.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../JAVA_git.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="35DEOdNMGJgQ59j50drxTFJIcX2" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "rendu__Exception",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/USER/IdeaProjects/JAVA_git/JAVA/src/tn/esprit/gestionzoo/interfaces",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de658d8b-840b-42c4-bb5e-a09c93e64cc6" name="Changes" comment="" />
+      <created>1762636211146</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1762636211146</updated>
+      <workItem from="1762636214385" duration="116000" />
+      <workItem from="1762636481296" duration="27000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
