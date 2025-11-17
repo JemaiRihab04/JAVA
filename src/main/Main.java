@@ -2,6 +2,10 @@ package main;
 
 import entities.Employe;
 import services.SocieteArrayList;
+import entities.Departement;
+import services.DepartementHashSet;
+
+import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
@@ -40,5 +44,36 @@ public class Main {
         societe.supprimerEmploye(e3);
         System.out.println("\n=== Liste après suppression de e3 ===");
         societe.displayEmploye();
+        // atelier 10
+        DepartementHashSet gestion = new DepartementHashSet();
+        Departement d1 = new Departement(3, "IT", 30);
+        Departement d2 = new Departement(1, "RH", 15);
+        Departement d3 = new Departement(2, "Finance", 20);
+        gestion.ajouterDepartement(d1);
+        gestion.ajouterDepartement(d2);
+        gestion.ajouterDepartement(d3);
+
+        System.out.println("LISTE DES DÉPARTEMENTS :");
+        gestion.displayDepartement();
+
+        System.out.println("Recherche du département IT : " +
+                gestion.rechercherDepartement("IT"));
+
+
+        System.out.println("\n TRI PAR ID (TreeSet) :");
+        TreeSet<Departement> sorted = gestion.trierDepartementById();
+        for (Departement d : sorted) {
+            System.out.println(d);
+        }
+
+        System.out.println("Suppression du département RH...");
+        gestion.supprimerDepartement(d2);
+
+        System.out.println("\n LISTE APRÈS SUPPRESSION :");
+        gestion.displayDepartement();
+
+
+
+
     }
 }
