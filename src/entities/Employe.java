@@ -71,6 +71,12 @@ public class Employe implements Comparable<Employe> {
         return this.id == e.id && this.nom.equals(e.nom);
     }
 
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(this.id);
+    }
+
+
 
     @Override
     public String toString() {
